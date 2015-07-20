@@ -3,16 +3,81 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>be.oysterchain</groupId>
   <artifactId>shop</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>shop</name>
+  <modules>
+    <module>core</module>
+    <module>backend</module>
+  </modules>
+  <name>00 - SHOP MASTER</name>
   <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+
+  <properties>
+      <shop.version>1.0-SNAPSHOT</shop.version>
+      <spring.version>4.1.7.RELEASE</spring.version>
+      <junit.version>3.8.1</junit.version>
+      <hibernate.version>4.3.10.Final</hibernate.version>
+      <unitils.version>3.4.2</unitils.version>
+      <joda-time.version>2.3</joda-time.version>
+      <h2.version>1.4.187</h2.version>
+      <guava.version>18.0</guava.version>
+  </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!--        <dependency>
+                    <groupId>org.unitils</groupId>
+                    <artifactId>unitils</artifactId>
+                    <version>3.4.2</version>
+                </dependency>-->
+
+        <!-- Joda-Time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+
+        <!-- To map JodaTime with database type -->
+        <dependency>
+            <groupId>org.jadira.usertype</groupId>
+            <artifactId>usertype.core</artifactId>
+            <version>3.0.0.CR1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+    </dependencies>
+
 </project>
