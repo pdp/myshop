@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * peter
@@ -15,6 +16,14 @@ public abstract class AbstractDomainObject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
+
+    private Date createdOn;
+
+    private String createdBy;
+
+    private Date modifiedOn;
+
+    private String modifiedBy;
 
     public Long getId() {
         return id;

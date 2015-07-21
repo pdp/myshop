@@ -1,6 +1,6 @@
 package dao.product;
 
-import domain.Product;
+import domain.product.Product;
 
 /**
  * peter
