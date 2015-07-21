@@ -1,37 +1,68 @@
 package domain;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name = "PRODUCT_PRICE")
-public class ProductPrice {
+public class ProductPrice extends AbstractDomainObject  {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
+    @NotNull
+    @Column(name = "VALUE")
+    private BigDecimal value;
 
-    @Column(name = "CODE")
-    private String code;
+    @NotNull
+    @Column(name = "START_DATE")
+    private Date startDate;
 
-    @Column(name = "NAME")
-    private String name;
+    @NotNull
+    @Column(name = "END_DATE")
+    private Date endDate;
 
-    @Lob
-    @Column(name = "DESCRIPTION")
-    private String description;
+    @NotNull
+    @Enumerated
+    @Column(name = "PRODUCT_PRICE_STATUS")
+    private ProductPriceStatus status;
 
-    public Long getId() {
-        return id;
+    public BigDecimal getValue() {
+        return value;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public ProductPriceStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProductPriceStatus status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return String.format("Productprice code [%s], name [%s], description [%s]", code, name, description);
+        return String.format("Productprice value [%s], startDate [%s], endDate [%s], status", value, startDate, endDate, status);
     }
 
 }

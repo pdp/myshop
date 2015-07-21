@@ -3,34 +3,25 @@ package domain;
 import com.mysql.jdbc.Clob;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.awt.datatransfer.StringSelection;
 
 @Entity
 @Table(name = "PRODUCT")
-public class Product {
+public class Product extends AbstractDomainObject {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
-
+    @NotNull
     @Column(name = "CODE")
     private String code;
 
+    @NotNull
     @Column(name = "NAME")
     private String name;
 
     @Lob
+    @NotNull
     @Column(name = "DESCRIPTION")
     private String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCode() {
         return code;
