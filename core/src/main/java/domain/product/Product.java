@@ -10,6 +10,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "PRODUCT")
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product extends AbstractDomainObject {
 
     @NotNull
@@ -28,6 +30,8 @@ public class Product extends AbstractDomainObject {
     @NotNull
     @Enumerated
     private ProductStatus status;
+
+    private String productType;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private Set<ProductPrice> productPrices;
@@ -66,6 +70,14 @@ public class Product extends AbstractDomainObject {
     public void addProductPrice(ProductPrice productPrice) {
         getProductPrices().add(productPrice);
         productPrice.setProduct(this);
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 
     @Override
