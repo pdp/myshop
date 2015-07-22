@@ -33,7 +33,7 @@ public class Discount extends AbstractDomainObject {
     @NotNull
     @Column(name = "START_DATE")
     private Date startDate;
-
+d
     @NotNull
     @Column(name = "END_DATE")
     private Date endDate;
