@@ -3,6 +3,7 @@ package domain.product;
 import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 import domain.AbstractDomainObject;
+import domain.discount.Discount;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,7 +12,8 @@ import java.util.Set;
 @Entity
 @Table(name = "PRODUCT")
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "PRODUCT_TYPE")
 public class Product extends AbstractDomainObject {
 
     @NotNull
@@ -31,10 +33,14 @@ public class Product extends AbstractDomainObject {
     @Enumerated
     private ProductStatus status;
 
+    @Column(name = "PRODUCT_TYPE")
     private String productType;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private Set<ProductPrice> productPrices;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "discount")
+    private Set<Discount> discounts;
 
     public String getCode() {
         return code;
