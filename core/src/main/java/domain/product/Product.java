@@ -4,8 +4,13 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 import domain.AbstractDomainObject;
 import domain.discount.Discount;
+import org.hibernate.mapping.*;
 
 import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
@@ -36,10 +41,10 @@ public class Product extends AbstractDomainObject {
     @Column(name = "PRODUCT_TYPE")
     private String productType;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private Set<ProductPrice> productPrices;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "discount")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "discount", fetch = FetchType.LAZY)
     private Set<Discount> discounts;
 
     public String getCode() {
@@ -76,6 +81,19 @@ public class Product extends AbstractDomainObject {
     public void addProductPrice(ProductPrice productPrice) {
         getProductPrices().add(productPrice);
         productPrice.setProduct(this);
+    }
+
+
+    public Set<Discount> getDiscounts() {
+        if(discounts == null) {
+            discounts = Sets.newHashSet();
+        }
+        return discounts;
+    }
+
+    public void addDiscount(Discount discount) {
+        getDiscounts().add(discount);
+        discount.setProduct(this);
     }
 
     public String getProductType() {

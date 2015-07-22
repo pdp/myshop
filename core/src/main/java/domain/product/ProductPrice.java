@@ -31,6 +31,7 @@ public class ProductPrice extends AbstractDomainObject {
     @Column(name = "PRODUCT_PRICE_STATUS")
     private ProductPriceStatus status;
 
+    @JoinColumn(name = "ID", nullable = false)
     private Product product;
 
     public BigDecimal getValue() {
