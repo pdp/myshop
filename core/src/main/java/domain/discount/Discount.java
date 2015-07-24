@@ -72,7 +72,7 @@ public class Discount extends AbstractDomainObject {
         this.endDate = endDate;
     }
 
-    public Discount getProduct() {
+    public Product getProduct() {
         return product;
     }
 

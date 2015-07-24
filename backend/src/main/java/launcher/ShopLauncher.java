@@ -1,5 +1,6 @@
-package dao.product;
+package launcher;
 
+import dao.product.ProductDao;
 import domain.product.Product;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ShopLauncher {
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-application.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("hibernate.cfg.xml");
 
         ProductDao productDao = context.getBean(ProductDao.class);
 
