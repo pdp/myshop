@@ -1,10 +1,9 @@
-package domain.product;
+package be.oysterchain.shop.domain.product;
 
+import be.oysterchain.shop.domain.AbstractDomainObject;
 import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
-import domain.AbstractDomainObject;
-import domain.discount.Discount;
-import org.hibernate.mapping.*;
+import be.oysterchain.shop.domain.discount.Discount;
 
 import javax.persistence.*;
 import javax.persistence.Column;
@@ -14,12 +13,16 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-@Entity
-@Table(name = "PRODUCT")
+
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@DiscriminatorColumn(name = "PRODUCT_TYPE")
+@Table(name = "PRODUCT")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product extends AbstractDomainObject {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
 
     @NotNull
     @Column(name = "CODE")
@@ -35,17 +38,18 @@ public class Product extends AbstractDomainObject {
     private String description;
 
     @NotNull
-    @Enumerated
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
     private ProductStatus status;
 
     @Column(name = "PRODUCT_TYPE")
     private String productType;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
+   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private Set<ProductPrice> productPrices;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "discount", fetch = FetchType.LAZY)
-    private Set<Discount> discounts;
+    private Set<Discount> discounts;*/
 
     public String getCode() {
         return code;
@@ -71,30 +75,30 @@ public class Product extends AbstractDomainObject {
         this.description = description;
     }
 
-    public Set<ProductPrice> getProductPrices() {
+/*    public Set<ProductPrice> getProductPrices() {
         if(productPrices == null) {
             productPrices = Sets.newHashSet();
         }
         return productPrices;
-    }
+    }*/
 
-    public void addProductPrice(ProductPrice productPrice) {
+/*    public void addProductPrice(ProductPrice productPrice) {
         getProductPrices().add(productPrice);
         productPrice.setProduct(this);
-    }
+    }*/
 
 
-    public Set<Discount> getDiscounts() {
+/*    public Set<Discount> getDiscounts() {
         if(discounts == null) {
             discounts = Sets.newHashSet();
         }
         return discounts;
-    }
+    }*/
 
-    public void addDiscount(Discount discount) {
+/*    public void addDiscount(Discount discount) {
         getDiscounts().add(discount);
         discount.setProduct(this);
-    }
+    }*/
 
     public String getProductType() {
         return productType;
@@ -102,6 +106,14 @@ public class Product extends AbstractDomainObject {
 
     public void setProductType(String productType) {
         this.productType = productType;
+    }
+
+    public ProductStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProductStatus status) {
+        this.status = status;
     }
 
     @Override
@@ -126,6 +138,6 @@ public class Product extends AbstractDomainObject {
 
     @Override
     public String toString() {
-        return String.format("Product code [%s], name [%s], description [%s]", code, name, description);
+        return String.format("Product code [%s], name [%s], description [%s], status [%s], productType [%s]", code, name, description, status, productType);
     }
 }

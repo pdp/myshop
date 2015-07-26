@@ -1,8 +1,8 @@
-package domain.discount;
+package be.oysterchain.shop.domain.discount;
 
+import be.oysterchain.shop.domain.AbstractDomainObject;
+import be.oysterchain.shop.domain.product.Product;
 import com.google.common.base.Objects;
-import domain.AbstractDomainObject;
-import domain.product.Product;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -29,10 +29,12 @@ public class Discount extends AbstractDomainObject {
     private BigDecimal value;
 
     @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "START_DATE")
     private Date startDate;
 
     @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "END_DATE")
     private Date endDate;
 

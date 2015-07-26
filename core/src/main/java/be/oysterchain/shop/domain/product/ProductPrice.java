@@ -1,7 +1,7 @@
-package domain.product;
+package be.oysterchain.shop.domain.product;
 
 import com.google.common.base.Objects;
-import domain.AbstractDomainObject;
+import be.oysterchain.shop.domain.AbstractDomainObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -19,10 +19,12 @@ public class ProductPrice extends AbstractDomainObject {
     private BigDecimal value;
 
     @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "START_DATE")
     private Date startDate;
 
     @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "END_DATE")
     private Date endDate;
 

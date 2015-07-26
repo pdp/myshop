@@ -1,6 +1,6 @@
-package dao.product;
+package be.oysterchain.shop.product;
 
-import domain.product.Product;
+import be.oysterchain.shop.domain.product.Product;
 
 /**
  * peter

@@ -1,4 +1,4 @@
-package domain.discount;
+package be.oysterchain.shop.domain.discount;
 
 /**
  * peter
