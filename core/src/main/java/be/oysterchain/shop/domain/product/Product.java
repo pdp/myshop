@@ -14,15 +14,11 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
-@MappedSuperclass
 @Table(name = "PRODUCT")
+@MappedSuperclass
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "PRODUCT_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class Product extends AbstractDomainObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
 
     @NotNull
     @Column(name = "CODE")
