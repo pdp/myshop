@@ -13,10 +13,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-@Table(name = "PRODUCT")
-@MappedSuperclass
+@Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
+@Table(name = "PRODUCT")
+@DiscriminatorColumn(name = "PRODUCT_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class Product extends AbstractDomainObject {
 
     @NotNull

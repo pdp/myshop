@@ -12,7 +12,6 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "ID")
 public class Brick extends Product {
 
-
     @Column(name = "HEIGHT")
     private int height;
 
