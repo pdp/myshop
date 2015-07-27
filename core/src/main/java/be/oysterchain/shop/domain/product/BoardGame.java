@@ -7,7 +7,28 @@ import javax.persistence.*;
  * 25.07.15
  */
 @Entity
-@DiscriminatorValue(value = "BOARD_GAME")
+@Table(name = "BOARD_GAME")
+@DiscriminatorValue("BOARD_GAME")
+@PrimaryKeyJoinColumn(name = "ID")
 public class BoardGame extends Product {
 
+    @Column
+    private int numberOfPlayers;
+
+    public BoardGame() {
+        super();
+    }
+
+    public int getNumberOfPlayers() {
+        return numberOfPlayers;
+    }
+
+    public void setNumberOfPlayers(int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Product code [%s], name [%s], description [%s], status [%s], number of players [%s]", getCode(), getName(), getDescription(), getStatus(), numberOfPlayers);
+    }
 }

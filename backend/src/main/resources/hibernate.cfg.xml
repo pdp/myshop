@@ -32,12 +32,13 @@
         <property name="annotatedClasses">
             <list>
                 <value>be.oysterchain.shop.domain.product.BoardGame</value>
+                <value>be.oysterchain.shop.domain.product.Brick</value>
             </list>
         </property>
     </bean>
 
 
-    <bean id="productDao" class="be.oysterchain.shop.product.ProductDaoImpl">
+    <bean id="productDao" class="be.oysterchain.shop.product.dao.ProductDaoImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 </beans>

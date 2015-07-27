@@ -1,4 +1,4 @@
-package be.oysterchain.shop.product;
+package be.oysterchain.shop.product.dao;
 
 import be.oysterchain.shop.domain.product.Product;
 import org.hibernate.Session;

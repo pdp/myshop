@@ -13,11 +13,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-
 @Table(name = "PRODUCT")
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "PRODUCT_TYPE", discriminatorType = DiscriminatorType.STRING)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 public class Product extends AbstractDomainObject {
 
     @NotNull
@@ -38,8 +37,11 @@ public class Product extends AbstractDomainObject {
     @Column(name = "STATUS")
     private ProductStatus status;
 
-    @Column(name = "PRODUCT_TYPE")
-    private String productType;
+    public Product() {
+    }
+
+/*    @Column(name = "PRODUCT_TYPE")
+    private String productType;*/
 
    /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private Set<ProductPrice> productPrices;
@@ -96,13 +98,13 @@ public class Product extends AbstractDomainObject {
         discount.setProduct(this);
     }*/
 
-    public String getProductType() {
+/*    public String getProductType() {
         return productType;
     }
 
     public void setProductType(String productType) {
         this.productType = productType;
-    }
+    }*/
 
     public ProductStatus getStatus() {
         return status;
@@ -134,6 +136,6 @@ public class Product extends AbstractDomainObject {
 
     @Override
     public String toString() {
-        return String.format("Product code [%s], name [%s], description [%s], status [%s], productType [%s]", code, name, description, status, productType);
+        return String.format("Product code [%s], name [%s], description [%s], status [%s]", code, name, description, status);
     }
 }

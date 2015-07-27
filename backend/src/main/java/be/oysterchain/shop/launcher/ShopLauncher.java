@@ -1,9 +1,9 @@
 package be.oysterchain.shop.launcher;
 
 import be.oysterchain.shop.domain.product.BoardGame;
+import be.oysterchain.shop.domain.product.Brick;
 import be.oysterchain.shop.domain.product.ProductStatus;
-import be.oysterchain.shop.product.ProductDao;
-import be.oysterchain.shop.domain.product.Product;
+import be.oysterchain.shop.product.dao.ProductDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -18,15 +18,25 @@ public class ShopLauncher {
 
         ProductDao productDao = context.getBean(ProductDao.class);
 
-        Product boardGame = new BoardGame();
+        BoardGame boardGame = new BoardGame();
         boardGame.setCode("A45001KLM");
         boardGame.setName("Klote hibernate");
         boardGame.setDescription("Om op te zitten");
         boardGame.setStatus(ProductStatus.AVAILABLE);
+        boardGame.setNumberOfPlayers(5);
         productDao.save(boardGame);
 
+        System.out.println("Boardgame::" + boardGame.toString());
 
-        System.out.println("Product::" + boardGame.toString());
+        Brick brick = new Brick();
+        brick.setCode("BBB");
+        brick.setName("Sucking hibernate");
+        brick.setDescription("Om te spelen");
+        brick.setStatus(ProductStatus.NEW);
+        brick.setHeight(15);
+        productDao.save(brick);
+
+        System.out.println("Brick::" + brick.toString());
 
         //close resources
         context.close();
