@@ -14,7 +14,7 @@ public class ShopLauncher {
 
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("hibernate.cfg.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean-context.xml");
 
         ProductDao productDao = context.getBean(ProductDao.class);
 
@@ -35,6 +35,7 @@ public class ShopLauncher {
         brick.setStatus(ProductStatus.NEW);
         brick.setHeight(15);
         productDao.save(brick);
+
 
         System.out.println("Brick::" + brick.toString());
 

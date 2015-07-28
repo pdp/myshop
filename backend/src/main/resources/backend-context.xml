@@ -19,7 +19,7 @@
 
 
     <!-- Hibernate 4 SessionFactory Bean definition -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="hibernateProperties">
             <props>
@@ -37,4 +37,14 @@
             </list>
         </property>
     </bean>
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:hibernate2.cfg.xml" />
+    </bean>
+
+<!--    <bean id="productDao" class="be.oysterchain.shop.product.dao.ProductDaoImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>-->
 </beans>

@@ -1,7 +1,5 @@
 package be.oysterchain.shop.domain;
 
-import be.oysterchain.shop.domain.be.oysterchain.shop.listener.BaseEntityListener;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,7 +8,6 @@ import java.util.Date;
  * 21.07.15
  */
 @MappedSuperclass
-@EntityListeners(BaseEntityListener.class)
 public abstract class AbstractDomainObject {
 
     @Id

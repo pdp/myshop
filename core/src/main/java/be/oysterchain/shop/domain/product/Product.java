@@ -2,16 +2,9 @@ package be.oysterchain.shop.domain.product;
 
 import be.oysterchain.shop.domain.AbstractDomainObject;
 import com.google.common.base.Objects;
-import com.google.common.collect.Sets;
-import be.oysterchain.shop.domain.discount.Discount;
 
 import javax.persistence.*;
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

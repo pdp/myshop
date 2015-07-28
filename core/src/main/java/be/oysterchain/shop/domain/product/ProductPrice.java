@@ -1,7 +1,7 @@
 package be.oysterchain.shop.domain.product;
 
-import com.google.common.base.Objects;
 import be.oysterchain.shop.domain.AbstractDomainObject;
+import com.google.common.base.Objects;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
