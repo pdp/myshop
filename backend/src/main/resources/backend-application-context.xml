@@ -9,7 +9,7 @@
 
     <context:component-scan base-package="be.oysterchain.shop" />
 
-    <import resource="classpath:backend-context.xml" />
+    <import resource="classpath:database-context.xml" />
     <import resource="classpath:hibernate.cfg.xml" />
 
 

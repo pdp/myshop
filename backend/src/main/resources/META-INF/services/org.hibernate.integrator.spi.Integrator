@@ -1,1 +1,1 @@
-be.oysterchain.shop.integrator.HibernateIntegrator
+be.oysterchain.shop.listener.HibernateIntegrator

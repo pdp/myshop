@@ -14,7 +14,7 @@ public class ShopLauncher {
 
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean-context.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("backend-application-context.xml");
 
         ProductDao productDao = context.getBean(ProductDao.class);
 

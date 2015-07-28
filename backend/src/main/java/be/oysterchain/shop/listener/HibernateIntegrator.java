@@ -1,7 +1,5 @@
-package be.oysterchain.shop.integrator;
+package be.oysterchain.shop.listener;
 
-import be.oysterchain.shop.listener.PreInsertAuditEventListener;
-import be.oysterchain.shop.listener.PreUpdateAuditEventListener;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.event.service.spi.EventListenerRegistry;
