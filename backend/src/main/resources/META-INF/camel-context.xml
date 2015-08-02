@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.15.2.xsd">
+
+
+            <!-- configure the Camel SQL component to use the JDBC data source -->
+    <bean id="camelSqlComponent" class="org.apache.camel.component.sql.SqlComponent">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- here is Camel configured with a number of routes -->
+    <camel:camelContext>
+
+        <!-- use Camel property placeholder loaded from the given file -->
+        <propertyPlaceholder id="placeholder" location="classpath:sql.properties"/>
+
+        <!-- route that generate new orders and insert them in the database -->
+        <route id="generateOrder-route">
+            <from uri="timer:orderTimer?period=5s"/>
+            <transform>
+                <method ref="orderBean" method="generateOrder"/>
+            </transform>
+            <to uri="sql:{{sql.insertOrder}}"/>
+            <log message="Inserted new order ${body[id]}"/>
+        </route>
+
+        <!-- route that process the orders by picking up new rows from the database
+             and when done processing then update the row to mark it as processed -->
+        <route id="processOrder-route">
+            <from uri="sql:{{sql.selectOrder}}?consumer.onConsume={{sql.markOrder}}"/>
+            <to uri="bean:orderBean?method=processOrder"/>
+            <log message="${body}"/>
+        </route>
+
+    </camel:camelContext>
+
+</beans>

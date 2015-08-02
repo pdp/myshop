@@ -10,6 +10,7 @@
         <!--<jta-data-source>${datasource}</jta-data-source>-->
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
         <class>be.oysterchain.shop.domain.product.Product</class>
         <class>be.oysterchain.shop.domain.product.BoardGame</class>
         <class>be.oysterchain.shop.domain.product.Brick</class>
