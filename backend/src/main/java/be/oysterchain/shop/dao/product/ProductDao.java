@@ -1,4 +1,4 @@
-package be.oysterchain.shop.product.dao;
+package be.oysterchain.shop.dao.product;
 
 import be.oysterchain.shop.domain.product.Product;
 

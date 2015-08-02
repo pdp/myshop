@@ -44,7 +44,7 @@
         <property name="configLocation" value="classpath:hibernate2.cfg.xml" />
     </bean>
 
-<!--    <bean id="productDao" class="be.oysterchain.shop.product.dao.ProductDaoImpl">
+<!--    <bean id="productDao" class="be.oysterchain.shop.dao.product.ProductDaoImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>-->
 </beans>

@@ -22,4 +22,13 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <datasource>db.datasource.shop</datasource>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

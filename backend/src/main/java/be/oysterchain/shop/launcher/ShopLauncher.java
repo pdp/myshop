@@ -3,7 +3,7 @@ package be.oysterchain.shop.launcher;
 import be.oysterchain.shop.domain.product.BoardGame;
 import be.oysterchain.shop.domain.product.Brick;
 import be.oysterchain.shop.domain.product.ProductStatus;
-import be.oysterchain.shop.product.dao.ProductDao;
+import be.oysterchain.shop.dao.product.ProductDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
