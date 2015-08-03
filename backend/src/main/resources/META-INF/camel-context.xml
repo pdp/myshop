@@ -12,13 +12,21 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL" value="vm://localhost?broker.persistent=false&amp;broker.useJmx=false&amp;waitForStart=5000"/>
+            </bean>
+        </property>
+    </bean>
+
     <!-- here is Camel configured with a number of routes -->
     <camel:camelContext>
 
-        <!-- use Camel property placeholder loaded from the given file -->
+<!--        &lt;!&ndash; use Camel property placeholder loaded from the given file &ndash;&gt;
         <propertyPlaceholder id="placeholder" location="classpath:sql.properties"/>
 
-        <!-- route that generate new orders and insert them in the database -->
+        &lt;!&ndash; route that generate new orders and insert them in the database &ndash;&gt;
         <route id="generateOrder-route">
             <from uri="timer:orderTimer?period=5s"/>
             <transform>
@@ -28,13 +36,13 @@
             <log message="Inserted new order ${body[id]}"/>
         </route>
 
-        <!-- route that process the orders by picking up new rows from the database
-             and when done processing then update the row to mark it as processed -->
+        &lt;!&ndash; route that process the orders by picking up new rows from the database
+             and when done processing then update the row to mark it as processed &ndash;&gt;
         <route id="processOrder-route">
             <from uri="sql:{{sql.selectOrder}}?consumer.onConsume={{sql.markOrder}}"/>
             <to uri="bean:orderBean?method=processOrder"/>
             <log message="${body}"/>
-        </route>
+        </route>-->
 
     </camel:camelContext>
 
