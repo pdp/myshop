@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
 
-    <artifactId>backend</artifactId>
+    <artifactId>shop-backend</artifactId>
 
     <build>
         <resources>
@@ -37,7 +37,7 @@
         <!-- PROJECT DEPENDENCIES -->
         <dependency>
             <groupId>be.oysterchain</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>shop-core</artifactId>
             <version>${shop.version}</version>
         </dependency>
 
@@ -77,6 +77,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

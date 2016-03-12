@@ -9,31 +9,33 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ear</artifactId>
+    <artifactId>shop-ear</artifactId>
     <name>03 - EAR</name>
     <packaging>ear</packaging>
 
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <filtering>false</filtering>
-        </resource>
-    </resources>
 
     <dependencies>
         <dependency>
             <groupId>be.oysterchain</groupId>
-            <artifactId>backend</artifactId>
+            <artifactId>shop-backend</artifactId>
             <version>${shop.version}</version>
             <scope>compile</scope>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>be.oysterchain</groupId>
+            <artifactId>shop-frontend</artifactId>
+            <version>${shop.version}</version>
+            <scope>compile</scope>
+            <type>war</type>
+        </dependency>
     </dependencies>
+
 
     <build>
         <finalName>${project.artifactId} - ${project.version}</finalName>
         <plugins>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
                 <version>2.10</version>
@@ -41,17 +43,41 @@
                     <filtering>true</filtering>
                     <defaultLibBundleDir>APP-INF/lib</defaultLibBundleDir>
                     <skinnyWars>true</skinnyWars>
-<!--                    <modules>
-                        <webModule>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>itp-jee-frontend</artifactId>
-                            <contextRoot>${app.contextroot}</contextRoot>
-                        </webModule>
-                    </modules>-->
+                    <modules>
+
+
+                    </modules>
                     <earSourceDirectory>src/main/resources</earSourceDirectory>
+                    <outputDirectory>deployments</outputDirectory>
                 </configuration>
-            </plugin>
-        </plugins>
+            </plugin>-->
+
+
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>1.1.0.Alpha1</version>
+                        <configuration>
+                            <username>pdp</username>
+                            <password>#Sproetje1</password>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
 
     </build>
 
