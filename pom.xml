@@ -8,8 +8,9 @@
   <modules>
     <module>core</module>
     <module>backend</module>
-    <module>ear</module>
     <module>frontend</module>
+    <module>rest</module>
+    <module>ear</module>
   </modules>
   <name>00 - SHOP MASTER</name>
   <url>http://maven.apache.org</url>
