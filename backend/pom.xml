@@ -98,45 +98,19 @@
         </profile>
 
         <profile>
+            <!--
+                When built in OpenShift the 'openshift' profile will be used when
+                invoking mvn. Use this profile for any OpenShift specific customization your app
+                will need.
+                By default that is to put the resulting archive into the 'deployments' folder. Any
+                deployable archive (EAR, WAR, EJB-JAR) that is placed into that folder will
+                automatically be deployed by OpenShift. Additionally, by changing the name of your
+                WAR to "ROOT.war", it will automatically be deployed on the "/" path.
+            -->
             <id>openshift</id>
-
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <artifactId>maven-war-plugin</artifactId>
-                            <configuration>
-                                <outputDirectory>webapps</outputDirectory>
-                                <warName>myshop</warName> <!-- http://wotan-anthavio.rhcloud.com/wotan -->
-                                <!-- <warName>ROOT</warName> http://wotan-anthavio.rhcloud.com/-->
-                            </configuration>
-                        </plugin>
-
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-enforcer-plugin</artifactId>
-                            <configuration>
-                                <skip>true</skip>
-                            </configuration>
-                        </plugin>
-
-                    </plugins>
-                </pluginManagement>
-            </build>
-
-            <repositories>
-                <repository>
-                    <id>sonatype-oss-public</id>
-                    <url>https://oss.sonatype.org/content/groups/public</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-
+            <properties>
+                <output.directory>deployments</output.directory>
+            </properties>
         </profile>
     </profiles>
 
