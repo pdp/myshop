@@ -109,7 +109,7 @@
             -->
             <id>openshift</id>
             <properties>
-                <output.directory>deployments/**</output.directory>
+                <output.directory>**</output.directory>
             </properties>
         </profile>
     </profiles>
