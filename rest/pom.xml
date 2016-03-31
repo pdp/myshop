@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rest</artifactId>
+    <artifactId>shop-rest</artifactId>
     <packaging>war</packaging>
     <name>04 - REST</name>
     <url>http://maven.apache.org</url>
@@ -19,7 +19,17 @@
             <artifactId>resteasy-jaxrs</artifactId>
             <version>3.0.16.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <version>3.0.12.Final</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <version>1.0-beta-5</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
