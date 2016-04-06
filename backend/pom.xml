@@ -98,19 +98,26 @@
         </profile>
 
         <profile>
-            <!--
-                When built in OpenShift the 'openshift' profile will be used when
-                invoking mvn. Use this profile for any OpenShift specific customization your app
-                will need.
-                By default that is to put the resulting archive into the 'deployments' folder. Any
-                deployable archive (EAR, WAR, EJB-JAR) that is placed into that folder will
-                automatically be deployed by OpenShift. Additionally, by changing the name of your
-                WAR to "ROOT.war", it will automatically be deployed on the "/" path.
-            -->
+            <!-- When built in OpenShift the 'openshift' profile will be
+                used when invoking mvn. -->
+            <!-- Use this profile for any OpenShift specific customization
+                your app will need. -->
+            <!-- By default that is to put the resulting archive into the
+                'deployments' folder. -->
+            <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
             <id>openshift</id>
-            <properties>
-                <output.directory>**</output.directory>
-            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.2</version>
+                        <configuration>
+                            <outputDirectory>deployments</outputDirectory>
+                            <warName>ROOT</warName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
