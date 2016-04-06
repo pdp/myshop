@@ -136,7 +136,6 @@
                         <version>2.2</version>
                         <configuration>
                             <outputDirectory>deployments</outputDirectory>
-                            <warName>ROOT</warName>
                         </configuration>
                     </plugin>
                 </plugins>
