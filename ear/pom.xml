@@ -15,7 +15,7 @@
 
 
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <groupId>be.oysterchain</groupId>
             <artifactId>shop-backend</artifactId>
             <version>${shop.version}</version>
@@ -28,7 +28,7 @@
             <version>${shop.version}</version>
             <scope>compile</scope>
             <type>war</type>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>be.oysterchain</groupId>
             <artifactId>shop-rest</artifactId>
@@ -38,7 +38,7 @@
         </dependency>
     </dependencies>
 
-<!--
+
     <build>
         <finalName>${project.artifactId} - ${project.version}</finalName>
         <plugins>
@@ -48,20 +48,21 @@
                 <version>2.10</version>
                 <configuration>
                     <skinnyWars>true</skinnyWars>
-                    <modules>
+                    <defaultJavaBundleDir>/WEB-INF/lib/</defaultJavaBundleDir>
                         <modules>
-                            <ejbModule>
+                            <webModule>
                                 <groupId>be.oysterchain</groupId>
                                 <artifactId>shop-rest</artifactId>
-                            </ejbModule>
+                                <contextRoot>/</contextRoot>
+                                <bundleFileName>ws.war</bundleFileName>
+                            </webModule>
                         </modules>
-                    </modules>
+                    <earSourceDirectory>src/main/resources</earSourceDirectory>
+                    <jboss>
+                        <unauthenticated-principal>guest</unauthenticated-principal>
+                    </jboss>
                 </configuration>
             </plugin>
-
-
-
-
         </plugins>
 
         <resources>
@@ -71,6 +72,6 @@
             </resource>
         </resources>
 
-    </build>-->
+    </build>
 
 </project>

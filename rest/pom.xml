@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>shop-rest</artifactId>
-    <packaging>ear</packaging>
+    <packaging>war</packaging>
     <name>04 - REST</name>
     <url>http://maven.apache.org</url>
     <dependencies>
