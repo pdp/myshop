@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void find(Long id) {
-
+    public Product find(Long id) {
+        return productDao.find(id);
     }
 }

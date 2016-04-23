@@ -9,5 +9,5 @@ public interface OrderService {
 
     void order(Product product);
 
-    void find(Long id);
+    Product find(Long id);
 }

@@ -13,7 +13,7 @@
 
     <artifactId>shop-backend</artifactId>
 
-    <!--<build>
+    <build>
         <finalName>myshop</finalName>
         <resources>
             <resource>
@@ -40,30 +40,12 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            &lt;!&ndash; Deployent on AS from console &ndash;&gt;
-            <plugin>
-                <groupId>org.jboss.as.plugins</groupId>
-                <artifactId>jboss-as-maven-plugin</artifactId>
-                <version>7.1.1.Final</version>
-            </plugin>
-            &lt;!&ndash; Surefire plugin before 2.9 version is buggy &ndash;&gt;
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12</version>
-            </plugin>
         </plugins>
-    </build>-->
+    </build>
 
 
 
     <dependencies>
-        <!-- PROJECT DEPENDENCIES -->
-        <dependency>
-            <groupId>be.oysterchain</groupId>
-            <artifactId>shop-core</artifactId>
-            <version>${shop.version}</version>
-        </dependency>
-
         <!-- CAMEL -->
         <dependency>
             <groupId>org.apache.camel</groupId>
