@@ -1,7 +1,6 @@
-package be.oysterchain.shop.domain.discount;
+package be.oysterchain.shop.domain.product;
 
-import be.oysterchain.shop.domain.AbstractDomainObject;
-import be.oysterchain.shop.domain.product.Product;
+import be.oysterchain.shop.domain.common.AbstractDomainObject;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
@@ -11,18 +10,9 @@ import java.util.Date;
 
 import static com.google.common.base.Objects.equal;
 
-/**
- * peter
- * 22.07.15
- */
 @Entity
-@Table(name = "DISCOUNT")
-public class Discount extends AbstractDomainObject {
-
-    @NotNull
-    @Column(name = "DISCOUNT_TYPE")
-    @Enumerated
-    private DiscountType discountType;
+@Table(name = "PRODUCT_PRICE")
+public class ProductPrice extends AbstractDomainObject {
 
     @NotNull
     @Column(name = "VALUE")
@@ -38,17 +28,13 @@ public class Discount extends AbstractDomainObject {
     @Column(name = "END_DATE")
     private Date endDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @Enumerated
+    @Column(name = "PRODUCT_PRICE_STATUS")
+    private ProductPriceStatus status;
+
     @JoinColumn(name = "ID", nullable = false)
     private Product product;
-
-    public DiscountType getDiscountType() {
-        return discountType;
-    }
-
-    public void setDiscountType(DiscountType discountType) {
-        this.discountType = discountType;
-    }
 
     public BigDecimal getValue() {
         return value;
@@ -74,6 +60,14 @@ public class Discount extends AbstractDomainObject {
         this.endDate = endDate;
     }
 
+    public ProductPriceStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProductPriceStatus status) {
+        this.status = status;
+    }
+
     public Product getProduct() {
         return product;
     }
@@ -88,22 +82,23 @@ public class Discount extends AbstractDomainObject {
             return true;
         }
 
-        if(!(object instanceof Discount)) {
+        if(!(object instanceof ProductPrice)) {
             return false;
         }
 
-        Discount other = (Discount) object;
+        ProductPrice other = (ProductPrice) object;
 
-        return equal(discountType, other.discountType) && equal(value, other.value) && equal(startDate, other.startDate) && equal(endDate, other.endDate);
+        return equal(value, other.value) && equal(startDate, other.startDate) && equal(endDate, other.endDate) && equal(status, other.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(discountType, value, startDate, endDate);
+        return Objects.hashCode(value, startDate, endDate, status);
     }
 
     @Override
     public String toString() {
-        return String.format("Discount discounttype [%s], value [%s], startDate [%s], endDate [%s]", discountType, value, startDate, endDate);
+        return String.format("Productprice value [%s], startDate [%s], endDate [%s], status", value, startDate, endDate, status);
     }
+
 }

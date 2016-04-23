@@ -14,7 +14,13 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ProductDao productDao;
 
+    @Override
     public void order(Product product) {
         productDao.save(product);
+    }
+
+    @Override
+    public void find(Long id) {
+
     }
 }

@@ -1,6 +1,6 @@
 package be.oysterchain.shop.domain.product;
 
-import be.oysterchain.shop.domain.AbstractDomainObject;
+import be.oysterchain.shop.domain.common.AbstractDomainObject;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;

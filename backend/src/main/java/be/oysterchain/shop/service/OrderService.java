@@ -8,4 +8,6 @@ import be.oysterchain.shop.domain.product.Product;
 public interface OrderService {
 
     void order(Product product);
+
+    void find(Long id);
 }

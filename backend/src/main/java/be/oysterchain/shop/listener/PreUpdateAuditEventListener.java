@@ -1,6 +1,6 @@
 package be.oysterchain.shop.listener;
 
-import be.oysterchain.shop.domain.AbstractDomainObject;
+import be.oysterchain.shop.domain.common.AbstractDomainObject;
 import org.hibernate.event.spi.PreUpdateEvent;
 import org.hibernate.event.spi.PreUpdateEventListener;
 import org.joda.time.DateTime;

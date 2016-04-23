@@ -23,4 +23,8 @@ public class ProductDaoImpl implements ProductDao {
         entityDao.persist(product);
     }
 
+    @Override
+    public Product find (Long id) {
+        return entityDao.find(id, Product.class);
+    }
 }

@@ -9,4 +9,6 @@ import be.oysterchain.shop.domain.product.Product;
 public interface ProductDao {
 
     void save(Product product);
+
+    Product find(Long id);
 }

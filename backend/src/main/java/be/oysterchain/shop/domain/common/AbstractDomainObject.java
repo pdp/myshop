@@ -1,4 +1,4 @@
-package be.oysterchain.shop.domain;
+package be.oysterchain.shop.domain.common;
 
 import javax.persistence.*;
 import java.util.Date;
