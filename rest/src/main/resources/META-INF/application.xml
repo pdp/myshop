@@ -11,7 +11,7 @@
     <module>
         <web>
             <web-uri>ws.war</web-uri>
-            <context-root>/</context-root>
+            <context-root>/rest</context-root>
         </web>
     </module>
 
