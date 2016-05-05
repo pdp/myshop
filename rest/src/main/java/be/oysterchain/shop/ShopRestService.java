@@ -36,7 +36,7 @@ public class ShopRestService {
             if(product == null){
                 msg = "product is null";
             } else {
-                msg = product.getName() + " " + msg;
+                msg = product.getName() + " " + "het automatisch deployen is gelukt";
             }
         }
 
