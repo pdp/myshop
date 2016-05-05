@@ -122,6 +122,13 @@
                     </plugin>
                 </plugins>
             </build>
+            <properties>
+                <db.driverClassName>com.mysql.jdbc.Driver</db.driverClassName>
+                <db.url>jdbc:mysql://127.6.144.130:3306/shop</db.url>
+                <datasource>db.datasource.shop.dev</datasource>
+                <db.username>adminSiXVSw4</db.username>
+                <db.password>aZCna2QTRPxM</db.password>
+            </properties>
         </profile>
     </profiles>
 
