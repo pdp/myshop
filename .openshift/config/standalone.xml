@@ -347,9 +347,7 @@
 				</jms-connection-factories>
 			</hornetq-server>
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:naming:1.1">
-			<remote-naming />
-		</subsystem>
+		<subsystem xmlns="urn:jboss:domain:naming:1.1"/>
 		<subsystem xmlns="urn:jboss:domain:osgi:1.2" activation="lazy">
 			<properties>
 				<!-- Specifies the beginning start level of the framework -->
