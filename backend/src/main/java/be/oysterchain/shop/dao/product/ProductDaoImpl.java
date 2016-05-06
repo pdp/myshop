@@ -5,8 +5,6 @@ import be.oysterchain.shop.domain.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
-
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
@@ -18,7 +16,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void save(Product product) {
         entityDao.persist(product);
     }
