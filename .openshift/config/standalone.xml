@@ -435,7 +435,7 @@
 		<interface name="management">
 			<loopback-address value="${env.OPENSHIFT_JBOSSEAP_IP}" />
 		</interface>
-		<interface name="public">domain:e
+		<interface name="public">
 			<loopback-address value="${env.OPENSHIFT_JBOSSEAP_IP}" />
 		</interface>
 		<interface name="unsecure">
