@@ -201,7 +201,7 @@
 				<initializers transactions="spec" security="on" />
 			</orb>
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:jaxr:1.1">domain:e
+		<subsystem xmlns="urn:jboss:domain:jaxr:1.1">
 			<connection-factory jndi-name="java:jboss/jaxr/ConnectionFactory" />
 		</subsystem>
 		<subsystem xmlns="urn:jboss:domain:jaxrs:1.0" />
