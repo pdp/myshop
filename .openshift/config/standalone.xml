@@ -98,13 +98,13 @@
 				relative-to="jboss.server.base.dir" scan-interval="5000"
 				deployment-timeout="300" />
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:ee:1.2">
+		<subsystem xmlns="urn:jboss:domain:ee:1.0">
 			<spec-descriptor-property-replacement>false
 			</spec-descriptor-property-replacement>
 			<jboss-descriptor-property-replacement>true
 			</jboss-descriptor-property-replacement>
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:ejb3:1.4">
+		<subsystem xmlns="urn:jboss:domain:ejb3:1.2">
 			<session-bean>
 				<stateless>
 					<bean-instance-pool-ref pool-name="slsb-strict-max-pool" />
@@ -152,7 +152,7 @@
 			</thread-pools>
 			<iiop enable-by-default="false" use-qualified-name="false" />
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:infinispan:1.3">
+		<subsystem xmlns="urn:jboss:domain:infinispan:1.2">
 			<cache-container name="cluster" aliases="ha-partition"
 				default-cache="default">
 				<transport lock-timeout="60000" />
@@ -195,13 +195,13 @@
 			<cache-container name="hibernate" default-cache="local-query"
 				module="org.jboss.as.jpa.hibernate:4">
 				<transport lock-timeout="60000" />
-				<local-cache name="local-query">
+				<local-cache name="local-query">domain:e
 					<transaction mode="NONE" />
 					<eviction strategy="LRU" max-entries="10000" />
 					<expiration max-idle="100000" />
 				</local-cache>
 				<invalidation-cache name="entity" mode="SYNC">
-					<transaction mode="NON_XA" />
+					<transaction mode="NON_XA" />domain:e
 					<eviction strategy="LRU" max-entries="10000" />
 					<expiration max-idle="100000" />
 				</invalidation-cache>
@@ -211,12 +211,12 @@
 				</replicated-cache>
 			</cache-container>
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:jacorb:1.2">
+		<subsystem xmlns="urn:jboss:domain:jacorb:1.1">
 			<orb>
 				<initializers transactions="spec" security="on" />
 			</orb>
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:jaxr:1.1">
+		<subsystem xmlns="urn:jboss:domain:jaxr:1.1">domain:e
 			<connection-factory jndi-name="java:jboss/jaxr/ConnectionFactory" />
 		</subsystem>
 		<subsystem xmlns="urn:jboss:domain:jaxrs:1.0" />
@@ -240,7 +240,7 @@
 			<cached-connection-manager />
 		</subsystem>
 		<subsystem xmlns="urn:jboss:domain:jdr:1.0" />
-		<subsystem xmlns="urn:jboss:domain:jgroups:1.1"
+		<subsystem xmlns="urn:jboss:domain:jgroups:1.0"
 			default-stack="tcp">
 			<stack name="tcp">
 				<transport type="TCP" socket-binding="jgroups-tcp">
@@ -288,7 +288,7 @@
 				<smtp-server outbound-socket-binding-ref="mail-smtp" />
 			</mail-session>
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:messaging:1.2">
+		<subsystem xmlns="urn:jboss:domain:messaging:1.1">
 			<hornetq-server>
 				<clustered>true</clustered>
 				<persistence-enabled>true</persistence-enabled>
@@ -362,7 +362,7 @@
 				</jms-connection-factories>
 			</hornetq-server>
 		</subsystem>
-		<subsystem xmlns="urn:jboss:domain:naming:1.2">
+		<subsystem xmlns="urn:jboss:domain:naming:1.1">
 			<remote-naming />
 		</subsystem>
 		<subsystem xmlns="urn:jboss:domain:osgi:1.2" activation="lazy">
@@ -389,7 +389,7 @@
 		</subsystem>
 		<subsystem xmlns="urn:jboss:domain:resource-adapters:1.0" />
 		<subsystem xmlns="urn:jboss:domain:sar:1.0" />
-		<subsystem xmlns="urn:jboss:domain:security:1.2">
+		<subsystem xmlns="urn:jboss:domain:security:1.1">
             <security-domains>
                 <security-domain name="other" cache-type="default">
                     <authentication>
@@ -414,7 +414,7 @@
             </security-domains>
         </subsystem>
 		<subsystem xmlns="urn:jboss:domain:threads:1.1" />
-		<subsystem xmlns="urn:jboss:domain:transactions:1.2">
+		<subsystem xmlns="urn:jboss:domain:transactions:1.1">
 			<core-environment>
 				<process-id>
 					<uuid />
@@ -452,7 +452,7 @@
 		<interface name="management">
 			<loopback-address value="${env.OPENSHIFT_JBOSSEAP_IP}" />
 		</interface>
-		<interface name="public">
+		<interface name="public">domain:e
 			<loopback-address value="${env.OPENSHIFT_JBOSSEAP_IP}" />
 		</interface>
 		<interface name="unsecure">
