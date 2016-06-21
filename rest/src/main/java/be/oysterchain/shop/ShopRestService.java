@@ -3,7 +3,6 @@ package be.oysterchain.shop;
 import be.oysterchain.shop.domain.product.Product;
 import be.oysterchain.shop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -25,12 +24,8 @@ public class ShopRestService {
     @Path("/{param}")
     public Response printMessage(@PathParam("param") String msg) {
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/backend-application-context.xml");
-
-        OrderService orderService = context.getBean(OrderService.class);
-
         if(orderService == null) {
-            msg = "orderservice is null";
+            msg = "orderservice is snull";
         } else {
             Product product = orderService.find(1L);
             if(product == null){
